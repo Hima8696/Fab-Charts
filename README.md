@@ -26,3 +26,10 @@ Google charts provides a rich library of graphs. We use visualization class of t
 * Tab Charts Output:
 After generating the chart using the other components the chart is displayed to the tab charts UI where user can export the chart as an image.
 
+### SAMPLE OUTPUT
+#### HOME PAGE
+![alt text](https://github.com/Hima8696/Tab-Charts/blob/master/Tabcharts/TabCharts%20Screenshots/Homepage.PNG "HOME PAGE")
+#### LOADING DATA
+![alt text](https://github.com/Hima8696/Tab-Charts/blob/master/Tabcharts/TabCharts%20Screenshots/Loading%20Data.png)
+#### GRAPHS
+![alt text](https://github.com/Hima8696/Tab-Charts/blob/master/Tabcharts/TabCharts%20Screenshots/Creating%20Graphs.PNG)
