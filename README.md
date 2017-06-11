@@ -1,5 +1,5 @@
-# Fab-Charts
-Fab Charts is an application which generates graphs for a given input dataset
+# Tab-Charts
+Tab Charts is an application which generates graphs for a given input dataset
 Tab Charts is an application which generates graphs for a given input dataset. It’s a lightweight JavaScript application which preprocess the dataset using a parser and identifies the attributes present in dataset. We can isolate the attributes and plot the graph on required attributes.  The user can choose different type of graphs and can export them.
 
 * Background :
