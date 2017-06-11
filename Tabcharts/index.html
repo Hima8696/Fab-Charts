@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"><head><script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<meta charset="utf-8">
+<title>TabCharts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Google Fonts -->
+<link href="http://fonts.googleapis.com/css?family=Lato:400,700,300" rel="stylesheet" type="text/css">
+<!--[if IE]>
+	<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:700" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
+<![endif]-->
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/theme.css" rel="stylesheet">
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css">
+<![endif]-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="vis.js"></script>
+<script type="text/javascript" src="list.min.js"></script>
+</head>
+
+<body data-twttr-rendered="true">
+<!--header-->
+	<div class="header">
+		<!--logo-->
+	  <div class="container">
+					<div class="logo">
+						 <a href="index.html">
+	<h1 class="title" style="color:#f5f5f5;">TabCharts</h1></a>  
+			  </div>
+					<!--menu-->
+								</div>
+		</div>
+	<!--//header-->
+	<!--page-->    
+    	<div id="banner">
+	<div class="container intro_wrapper">
+	<div class="inner_content">
+	<h1>Create Graph</h1>
+ <!--
+	<h1 class="title">Current Openings</h1>
+	<h1 class="intro">
+ </h1>-->
+	</div>
+		</div>
+			</div>
+			<div class="pad30"></div>
+			<div class="container wrapper">
+			<div class="inner_content">
+	
+	<div class="row">
+	<div class="span12">
+         <div class="bs-docs-example">
+              <div id="accordion" class="accordion">
+
+
+								<div class="accordion-group" style="height:900px;padding: 14px;">
+								
+								<div>
+    <form class="form-horizontal well">
+      <fieldset>
+          <label for="csvFileInput"> <strong>CSV File:</strong>
+          </label>
+          <input type="file" id="csvFileInput" onchange="handleFiles(this.files)"
+          accept=".csv">
+        </div>
+      </fieldset>
+    </form>
+	<form>
+	<h2 class="title" style="color:#f5f5f5;">Select X-axis</h2>
+	<select id="attributeSelectionX"></select>
+	<select id="attributeXDataType">
+  <option value="string">string</option>
+  <option value="number">number</option>
+  <option value="boolean">boolean</option>
+  <option value="date">date</option>
+  <option value="datetime">datetime</option>
+  <option value="timeofday">timeofday</option>
+</select>
+	<h2 class="title" style="color:#f5f5f5;">Select Y-axis</h2>
+	<select id="attributeSelectionY"></select>
+<select id="attributeYDataType">
+  <option value="string">string</option>
+  <option value="number">number</option>
+  <option value="boolean">boolean</option>
+  <option value="date">date</option>
+  <option value="datetime">datetime</option>
+  <option value="timeofday">timeofday</option>
+</select>
+   <div id="datarangeMin"></div>
+   <h4 id="datarangeMinValue" style="color:white;"></h3>
+   <div id="datarangeMax"></div>
+	<h4 id="datarangeMaxValue" style="color:white;"></h3>
+
+		<h2 class="title" style="color:#f5f5f5;">Select Chart Type</h2>
+<select id="graphSelection">
+  <option value="BarChart">BarChart</option>
+  <option value="PieChart">PieChart</option>
+  <option value="LineChart">LineChart</option>
+  <option value="ScatterChart">ScatterChart</option>
+  <option value="ColumnChart">ColumnChart</option>
+  <option value="Histogram">Histogram</option>
+</select>
+	<h2 class="title" style="color:#f5f5f5;">Graph Details</h2>	
+<input id="graphTitle" type="text" style=" height:30px; width:280px;" placeholder="Title"/>
+<input id="hAxis" type="text" style=" height:30px; width:280px;" placeholder="Horizontal Axis" />
+<input id="vAxis" type="text" style=" height:30px; width:280px;" placeholder="Vertical Axis"/>
+</form>
+<button type="button" class="big_button,btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" onclick="generateGraph()" class="big_button">Generate Graph</button>
+                       
+         <div id='png'></div>  
+		 
+          </div>
+	</div>
+    </div>
+	</div>
+    </div>
+	
+  </div>
+
+<!--//page-->
+   <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog" style="margin-left:-350px;background-color:#2b3c4e;  width:800px;height:500px;border:0px solid #ccc; padding:20px;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Graph</h4>
+      </div>
+      <div class="modal-body">
+        <div id="piechart" style="width:600px; height:400px;">
+		  
+
+      </div>
+    </div>
+</div> 
+</div>   
+</div> 
+	<!--//page-->
+		
+		<div class="pad25 hidden-desktop"></div>
+	
+	
+	<div id="footer2">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+				<div class="copyright"> &copy;	Hima Bindu Medarametla</div>
+						</div>
+					</div>
+				</div>
+					</div>
+						
+				<!-- up to top -->
+				<a href="#"><i class="go-top hidden-phone hidden-tablet  icon-double-angle-up" style="display: none;"></i></a>
+	
+<!-- Trigger the modal with a button -->
+
+
+
+</body>
+
+</html>
